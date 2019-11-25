@@ -2,11 +2,14 @@
 #include<stdlib.h>
 
 struct node {
+    //the building block of a queue.
     int data;
     struct node * next;
 };
 
 struct node * insert(struct node * tail,int data){
+    //takes the tail of a queue and puts a new node at the end of it.
+    //returns new tail.
     struct node *temp=(struct node*)malloc(sizeof(struct node));
     temp->next=NULL;
     temp->data=data;
@@ -16,6 +19,8 @@ struct node * insert(struct node * tail,int data){
 }
 
 struct node * delete(struct node * head){
+    //takes the head of a queue and deletes one element from head.
+    //returns new head.
     struct node * temp=head;
     head=head->next;
     free(temp);
@@ -25,6 +30,7 @@ struct node * delete(struct node * head){
 
 int search(struct node * head,int data){
     //search for index of data from head 0 based counting
+    //returns the 0 based index of first occurence of data. counting from head.
     int i=0;
     struct node * temp=head;
     while(temp!=NULL){
@@ -38,6 +44,7 @@ int search(struct node * head,int data){
 }
 
 void traverse(struct node* head){
+    //takes the head of a queue and prints all elements of it.
     struct node * temp=head;
     while(temp!=NULL){
         printf("\n %d ",temp->data);
